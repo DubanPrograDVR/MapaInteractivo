@@ -55,6 +55,7 @@ export default function AgregarSolicitud() {
 
         fetchTipoRecinto();
     }, []);
+
     const [usuario, setUsuario] = useState<any>(null); // Almacena los datos del usuario
 
     useEffect(() => {
@@ -94,6 +95,7 @@ export default function AgregarSolicitud() {
 
         fetchAccesibilidades();
     }, []);
+
     // Generar vista previa cuando se selecciona un archivo
     useEffect(() => {
         if (!file) {
@@ -121,15 +123,15 @@ export default function AgregarSolicitud() {
     };
 
     const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    if (name === 'descripcion') {
-        setCharCount(value.length);
-    }
-    setFormData({
-        ...formData,
-        [name]: value
-    });
-};
+        const { name, value } = e.target;
+        if (name === 'descripcion') {
+            setCharCount(value.length);
+        }
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => { // MANEJA LOS DATOS DE LOS INPUTS
         const { name, value, type, checked } = e.target;
@@ -138,6 +140,7 @@ export default function AgregarSolicitud() {
             [name]: type === 'checkbox' ? checked : value
         });
     };
+
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({
@@ -364,6 +367,7 @@ export default function AgregarSolicitud() {
     if (!instruccionesleidas) {
         return <Info onConfirmarLectura={() => setInstruccionesLeidas(true)} />;
     }
+    
     return (
         <div className={styles.container}>
             <div className={styles.titulo}>
@@ -567,7 +571,7 @@ export default function AgregarSolicitud() {
                         <input
                             ref={inputRef}
                             type="text"
-                            name="dirección"
+                            name="direccion"
                             placeholder="Escribe una dirección…"
                             className={styles.inputText}
                             value={formData.direccion}
